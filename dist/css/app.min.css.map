@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "app.min.css",
+	"sources": [
+		"../../src/styles/sass/main.scss"
+	],
+	"sourcesContent": [
+		".sbj_has-modal {\r\n    overflow: hidden;\r\n\r\n    .sbj_modal-container {\r\n        bottom: 0;\r\n        position: fixed;\r\n        top: 0;\r\n        left: 0;\r\n        right: 0;\r\n        text-align: center;\r\n\r\n        .sbj_modal-backdrop {\r\n            position: fixed;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            bottom: 0;\r\n            background: rgba(0,0,0,.2);\r\n        }\r\n\r\n        .sbj_modal {\r\n            position: absolute;\r\n            width: 100%;\r\n            height: 100%;\r\n            overflow: auto;\r\n            .sbj_modal-body {\r\n                display: inline-block;\r\n                background: white;\r\n                margin-top: 20px;\r\n                width: 90%;\r\n                &.large {\r\n                    width: 90%;\r\n                }\r\n                &.medium {\r\n                    width: 60%;\r\n                }\r\n                &.small {\r\n                    width: 40%;\r\n                }\r\n            }   \r\n        }\r\n    }\r\n}"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,cAAc,AAAC,CACX,QAAQ,CAAE,MAAM,CAyCnB,AA1CD,AAGI,cAHU,CAGV,oBAAoB,AAAC,CACjB,MAAM,CAAE,CAAC,CACT,QAAQ,CAAE,KAAK,CACf,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,CAAC,CACR,UAAU,CAAE,MAAM,CAgCrB,AAzCL,AAWQ,cAXM,CAGV,oBAAoB,CAQhB,mBAAmB,AAAC,CAChB,QAAQ,CAAE,KAAK,CACf,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,CAAC,CACR,MAAM,CAAE,CAAC,CACT,UAAU,CAAE,eAAc,CAC7B,AAlBT,AAoBQ,cApBM,CAGV,oBAAoB,CAiBhB,UAAU,AAAC,CACP,QAAQ,CAAE,QAAQ,CAClB,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,QAAQ,CAAE,IAAI,CAgBjB,AAxCT,AAyBY,cAzBE,CAGV,oBAAoB,CAiBhB,UAAU,CAKN,eAAe,AAAC,CACZ,OAAO,CAAE,YAAY,CACrB,UAAU,CAAE,KAAK,CACjB,UAAU,CAAE,IAAI,CAChB,KAAK,CAAE,GAAG,CAUb,AAvCb,AA8BgB,cA9BF,CAGV,oBAAoB,CAiBhB,UAAU,CAKN,eAAe,AAKV,MAAM,AAAC,CACJ,KAAK,CAAE,GAAG,CACb,AAhCjB,AAiCgB,cAjCF,CAGV,oBAAoB,CAiBhB,UAAU,CAKN,eAAe,AAQV,OAAO,AAAC,CACL,KAAK,CAAE,GAAG,CACb,AAnCjB,AAoCgB,cApCF,CAGV,oBAAoB,CAiBhB,UAAU,CAKN,eAAe,AAWV,MAAM,AAAC,CACJ,KAAK,CAAE,GAAG,CACb"
+}

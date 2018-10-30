@@ -1,0 +1,43 @@
+.sbj_has-modal {
+    overflow: hidden;
+
+    .sbj_modal-container {
+        bottom: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+
+        .sbj_modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.2);
+        }
+
+        .sbj_modal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            .sbj_modal-body {
+                display: inline-block;
+                background: white;
+                margin-top: 20px;
+                width: 90%;
+                &.large {
+                    width: 90%;
+                }
+                &.medium {
+                    width: 60%;
+                }
+                &.small {
+                    width: 40%;
+                }
+            }   
+        }
+    }
+}

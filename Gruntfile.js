@@ -163,8 +163,8 @@ module.exports = function(grunt){
 				expand: true,
 				dot: true,
 				cwd: 'src/styles',
-				dest: publishConfig.path + '/css/',
-				src: ['**','!sass/**']
+				dest: publishConfig.path,
+				src: ['sass/**']
 			},
 			custom: { 
 				files: customDirDist 
@@ -281,7 +281,8 @@ module.exports = function(grunt){
 			cache: {}, 
 			packageCache: {}, 
 			debug: true, 
-			extensions: ['.js', '.jsx']
+			extensions: ['.js', '.jsx'],
+			standalone: publishConfig.libFileName
 		});
 
 		var handleError = function(err){

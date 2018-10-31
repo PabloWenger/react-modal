@@ -19,13 +19,13 @@ module.exports={
 	env: 'prod',
 
 	/**
-	 * @description file name to use
+	 * @description exports for standalone lib. (file name and module exports)
 	 * @type {String}
 	 */
-	libFileName: 'react-modal',
+	exports: 'react-modal',
 
 	/**
-	 * @description entry file relative to gruntfile.js
+	 * @description entry file to exports, relative to gruntfile.js
 	 * @type {String}
 	 */
 	entryFile: './src/modules/react-modal/modal.jsx'

@@ -139,9 +139,10 @@ module.exports = function(grunt){
 
 		clean: {
 			options: {
-				force: true
+				force: true,
 			},
-			dist: [publishConfig.path],
+			bundle: './bundle',
+			dist: [publishConfig.path]
 		},
 
 		copy: {
@@ -150,14 +151,14 @@ module.exports = function(grunt){
 				dot: true,
 				cwd: 'src',
 				dest: publishConfig.path,
-				src: ['**','!**/*.js','!**/*.jsx','!bundle/**','!styles/**']
+				src: ['**','!index.html','!**/*.js','!**/*.jsx','!bundle/**','!styles/**']
 			},
 			bundles: {
 				expand: true,
 				dot: true,
 				cwd: 'bundle',
 				dest: publishConfig.path,
-				src: ['js/**/*', '!js/**/*libs.js', 'css/**/*']
+				src: ['js/' + publishConfig.exports + '.*', 'css/' + publishConfig.exports + '.*']
 			},
 			styles_dist: {
 				expand: true,
@@ -181,7 +182,7 @@ module.exports = function(grunt){
 					sourceMapContents: true 
 				},
 				src: ['src/styles/sass/main.scss'],
-				dest: 'bundle/css/app.css'
+				dest: 'bundle/css/' + publishConfig.exports +  '.css'
 			},
 			dist: {
 				options: {
@@ -192,7 +193,7 @@ module.exports = function(grunt){
 					sourceMapContents: true
 				},
 				src: ['src/styles/sass/main.scss'],
-				dest: publishConfig.path + '/css/app.min.css'
+				dest: publishConfig.path + '/css/' + publishConfig.exports + '.min.css'
 			}
 		},
 
@@ -204,7 +205,7 @@ module.exports = function(grunt){
 			},
 			app: {
 				files: {
-					'<%= publishConfig.path %>/js/<%= publishConfig.libFileName %>.min.js' : publishConfig.path + '/js/' + publishConfig.libFileName + '.js'
+					'<%= publishConfig.path %>/js/<%= publishConfig.exports %>.min.js' : publishConfig.path + '/js/' + publishConfig.exports + '.js'
 				}
 			}
 		},
@@ -213,8 +214,29 @@ module.exports = function(grunt){
 			options: {
 				files: false,
 				force: true,
+			},
+			dist: [publishConfig.path + '/**/*'],
+		},
+
+		'string-replace': {
+			dev: {
+				options: {
+					replacements: [
+						{
+							pattern: /(<!--\s*?bundle:(js|css)\s*?-->)[\s\S]*?(<!--\s*?endbundle\s*?-->)/gm,
+							replacement: function(match, sectype) {
+								var tag = sectype.indexOf(':js') > 0 
+									? '<script src="js/libs.js?_r='+ time +'"></script>\n\t<script src="js/' + publishConfig.exports + '.js?_r='+ time +'"></script>'
+									: '<link rel="stylesheet" type="text/css" href="css/' + publishConfig.exports + '.css?_r='+ time +'">';
+								return sectype + tag + '<!--endbundle-->';
+							}
+						}
+					]
 				},
-				dist: [publishConfig.path + '/**/*'],
+				files: {
+					'./src/index.html': './src/index.html'
+				}
+			}
 		}
 
 	});
@@ -274,15 +296,15 @@ module.exports = function(grunt){
 	grunt.registerTask('browserify-app', 'bundles our app', function(dist){
 		var done = this.async();
 		var dir = './bundle/js';
-		var mapFilePath = path.join(__dirname, dir, publishConfig.libFileName + '.js.map');
-		var filePath = path.join(__dirname, dir, publishConfig.libFileName + '.js');
+		var mapFilePath = path.join(__dirname, dir, publishConfig.exports + '.js.map');
+		var filePath = path.join(__dirname, dir, publishConfig.exports + '.js');
 
 		var b = browserify({ 
 			cache: {}, 
 			packageCache: {}, 
 			debug: true, 
 			extensions: ['.js', '.jsx'],
-			standalone: publishConfig.libFileName
+			standalone: publishConfig.exports
 		});
 
 		var handleError = function(err){
@@ -346,8 +368,10 @@ module.exports = function(grunt){
 		if (param) env = param;
 
 		grunt.task.run([
+			'clean:bundle',
 			'find-port',
 			'write-env',
+			'string-replace',
 			'sass:dev',
 			'browserify-libs',
 			'browserify-app',
@@ -356,20 +380,11 @@ module.exports = function(grunt){
 		]);
 	});
 
-	grunt.registerTask('posDist', 'tasks after dist', function(){
-		/**
-		 * display result dist into browser
-		 */
-		if (publishConfig.display) {
-			grunt.task.run('connect:dist');
-		}
-	});
-
 	grunt.registerTask('dist', 'makes package using env config', function(param){
 		env = param || publishConfig.env;
 		grunt.task.run([
-			'write-env',
 			'clean',
+			'write-env',
 			'browserify-libs',
 			'browserify-app:dist',
 			'copy',

@@ -10,16 +10,14 @@ module.exports = function(config) {
 		basePath: '../',
 		frameworks: ['browserify','jasmine'],
 		files: [
+			'src/tests/custom.js',
 			'bundle/css/*.css',
 			'bundle/js/*.js', 
 			'src/tests/*.js'
 		],
 		exclude: [],
 		preprocessors: {
-			'src/tests/*.js': ['browserify','inject-html']
-		},
-		injectHtml: {
-			raw: '<div id="app"></div>'
+			'src/tests/*.js': ['browserify']
 		},
 		browserify: {
 			debug: true,
@@ -52,7 +50,7 @@ module.exports = function(config) {
 			// Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
 			exitOnResourceError: true
 		},
-		singleRun: true,
+		singleRun: false,
 		concurrency: Infinity
 	});
 };

@@ -399,6 +399,7 @@ module.exports = function(grunt){
 		grunt.task.run([
 			'write-env',
 			'sass:dev',
+			'string-replace',
 			'browserify-libs',
 			'browserify-app'
 		]);

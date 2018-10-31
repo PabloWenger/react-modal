@@ -3,26 +3,16 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-/**
- * @description zindex por defecto si el componente `ModalContainer` no lo define
- * @type {Number}
- */
-const DEFAULT_ZINDEX = 2000;
-
-/**
- * @description clases
- */
-const PREFIX_CLASS              = 'sbj_';
-const MODAL_CLASS               = 'modal';
-const HAS_MODAL_CLASS           = 'has-modal';
-const MODAL_BACKDROP_CLASS      = 'modal-backdrop';
-const MODAL_BODY_CLASS          = 'modal-body';
-const MODAL_CONTAINER_CLASS     = 'modal-container';
-
-/**
- * @description clases de tamaños a validar;
- */
-const SIZE_CLASSES = 'small,medium,large';
+import {
+    DEFAULT_ZINDEX,
+    PREFIX_CLASS,         
+    MODAL_CLASS,          
+    HAS_MODAL_CLASS,      
+    MODAL_BACKDROP_CLASS, 
+    MODAL_BODY_CLASS,     
+    MODAL_CONTAINER_CLASS,
+    SIZE_CLASSES
+} from './constants';
 
 /**
  * @description permite mantener la referencia del nodo contenedor de las modales

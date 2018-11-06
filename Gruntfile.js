@@ -17,6 +17,7 @@ module.exports = function(grunt){
 	var path = require('path');
 	var nodeSass = require('node-sass');
 	var watchify = require('watchify');
+	var derequire = require('browserify-derequire');
 
 	var time = (new Date()).getTime();
 
@@ -328,6 +329,7 @@ module.exports = function(grunt){
 		b.require(entryFile, { entry : true })
 		.plugin(watchify)
 		.plugin(pathmodify, modsAliases)
+		.plugin(derequire)
 		.transform('stringify')
 		.transform('babelify', require('./conf/babel.config'))
 		.external(libs)

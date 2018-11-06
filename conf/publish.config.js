@@ -22,7 +22,7 @@ module.exports={
 	 * @description exports for standalone lib. (file name and module exports)
 	 * @type {String}
 	 */
-	exports: 'react-modal',
+	exports: 'react-modal', //will become reactModal
 
 	/**
 	 * @description entry file to exports, relative to gruntfile.js

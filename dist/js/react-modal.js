@@ -4,6 +4,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.SIZE_CLASSES = exports.MODAL_CONTAINER_CLASS = exports.MODAL_BODY_CLASS = exports.MODAL_BACKDROP_CLASS = exports.HAS_MODAL_CLASS = exports.MODAL_CLASS = exports.PREFIX_CLASS = exports.DEFAULT_ZINDEX = void 0;
+
+/**
+ * @description zindex por defecto si el componente `ModalContainer` no lo define
+ * @type {Number}
+ */
+var DEFAULT_ZINDEX = 2000;
+/**
+ * @description clases
+ */
+
+exports.DEFAULT_ZINDEX = DEFAULT_ZINDEX;
+var PREFIX_CLASS = 'sbj_';
+exports.PREFIX_CLASS = PREFIX_CLASS;
+var MODAL_CLASS = 'modal';
+exports.MODAL_CLASS = MODAL_CLASS;
+var HAS_MODAL_CLASS = 'has-modal';
+exports.HAS_MODAL_CLASS = HAS_MODAL_CLASS;
+var MODAL_BACKDROP_CLASS = 'modal-backdrop';
+exports.MODAL_BACKDROP_CLASS = MODAL_BACKDROP_CLASS;
+var MODAL_BODY_CLASS = 'modal-body';
+exports.MODAL_BODY_CLASS = MODAL_BODY_CLASS;
+var MODAL_CONTAINER_CLASS = 'modal-container';
+/**
+ * @description clases de tamaños a validar;
+ */
+
+exports.MODAL_CONTAINER_CLASS = MODAL_CONTAINER_CLASS;
+var SIZE_CLASSES = 'small,medium,large';
+exports.SIZE_CLASSES = SIZE_CLASSES;
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.getModalContainer = getModalContainer;
 exports.openModal = _openModal;
 exports.closeModal = _closeModal;
@@ -16,6 +53,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _constants = require("./constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,30 +77,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /**
- * @description zindex por defecto si el componente `ModalContainer` no lo define
- * @type {Number}
- */
-var DEFAULT_ZINDEX = 2000;
-/**
- * @description clases
- */
-
-var PREFIX_CLASS = 'sbj_';
-var MODAL_CLASS = 'modal';
-var HAS_MODAL_CLASS = 'has-modal';
-var MODAL_BACKDROP_CLASS = 'modal-backdrop';
-var MODAL_BODY_CLASS = 'modal-body';
-var MODAL_CONTAINER_CLASS = 'modal-container';
-/**
- * @description clases de tamaños a validar;
- */
-
-var SIZE_CLASSES = 'small,medium,large';
-/**
  * @description permite mantener la referencia del nodo contenedor de las modales
  * @type {Object}
  */
-
 var modalContainer = {};
 /**
  * @description colección de modales renderizadas
@@ -157,13 +175,13 @@ function getModalContainer() {
 function _openModal(component, props) {
   var nodo = getModalContainer();
   var comp = _react.default.isValidElement(component) ? component : _react.default.createElement(component, props);
-  document.querySelector('body').classList.add("".concat(PREFIX_CLASS).concat(HAS_MODAL_CLASS));
-  var backdrop = nodo.querySelector(".".concat(PREFIX_CLASS).concat(MODAL_BACKDROP_CLASS));
+  document.querySelector('body').classList.add("".concat(_constants.PREFIX_CLASS).concat(_constants.HAS_MODAL_CLASS));
+  var backdrop = nodo.querySelector(".".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_BACKDROP_CLASS));
   var zindex = getZindex() + 1;
 
   if (!backdrop) {
     backdrop = document.createElement('div');
-    backdrop.classList.add("".concat(PREFIX_CLASS).concat(MODAL_BACKDROP_CLASS));
+    backdrop.classList.add("".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_BACKDROP_CLASS));
     backdrop.style.zIndex = zindex;
     nodo.appendChild(backdrop);
   } else {
@@ -172,7 +190,7 @@ function _openModal(component, props) {
 
   var modal = document.createElement('div');
   modal.style.zIndex = zindex + 1;
-  modal.classList.add("".concat(PREFIX_CLASS).concat(MODAL_CLASS));
+  modal.classList.add("".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_CLASS));
   nodo.appendChild(modal);
 
   _reactDom.default.render(comp, nodo.lastElementChild);
@@ -186,13 +204,13 @@ function _openModal(component, props) {
 function _closeModal() {
   var modal = modals.splice(modals.length - 1, 1)[0];
   var nodo = getModalContainer();
-  var backdrop = nodo.querySelector(".".concat(PREFIX_CLASS).concat(MODAL_BACKDROP_CLASS));
+  var backdrop = nodo.querySelector(".".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_BACKDROP_CLASS));
   modal.parentNode.remove();
 
   _reactDom.default.unmountComponentAtNode(modal.parentNode);
 
   if (modals.length <= 0) {
-    document.querySelector('body').classList.remove("".concat(PREFIX_CLASS).concat(HAS_MODAL_CLASS));
+    document.querySelector('body').classList.remove("".concat(_constants.PREFIX_CLASS).concat(_constants.HAS_MODAL_CLASS));
     backdrop.remove();
   } else {
     backdrop.style.zIndex = getZindex() - 1;
@@ -259,7 +277,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         ref: "modalRef",
-        className: (0, _classnames.default)("".concat(PREFIX_CLASS).concat(MODAL_BODY_CLASS), this.props.size, this.props.className)
+        className: (0, _classnames.default)("".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_BODY_CLASS), this.props.size, this.props.className)
       }, this.props.children);
     }
   }]);
@@ -274,7 +292,7 @@ function (_React$Component) {
 
 exports.Modal = Modal;
 Modal.propTypes = {
-  size: _propTypes.default.oneOf(SIZE_CLASSES.replace(/\s/g, '').split(','))
+  size: _propTypes.default.oneOf(_constants.SIZE_CLASSES.replace(/\s/g, '').split(','))
   /**
    * @author Sinecio Bermúdez Jacque
    * @description Componente que provee la estructura del header de un componente
@@ -439,7 +457,7 @@ function (_React$Component5) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ModalContainer).call(this, props));
     _this.container = modalContainer = _react.default.createRef();
-    _this.zIndex = zIndex = Number(_this.props.zIndex) || DEFAULT_ZINDEX;
+    _this.zIndex = zIndex = Number(_this.props.zIndex) || _constants.DEFAULT_ZINDEX;
     return _this;
   }
 
@@ -448,7 +466,7 @@ function (_React$Component5) {
     value: function render() {
       return _react.default.createElement("div", {
         ref: this.container,
-        className: "".concat(PREFIX_CLASS).concat(MODAL_CONTAINER_CLASS)
+        className: "".concat(_constants.PREFIX_CLASS).concat(_constants.MODAL_CONTAINER_CLASS)
       });
     }
   }]);
@@ -458,6 +476,6 @@ function (_React$Component5) {
 
 exports.ModalContainer = ModalContainer;
 
-},{"classnames":"classnames","prop-types":"prop-types","react":"react","react-dom":"react-dom"}]},{},[1])(1)
+},{"./constants":1,"classnames":"classnames","prop-types":"prop-types","react":"react","react-dom":"react-dom"}]},{},[2])(2)
 });
 //# sourceMappingURL=react-modal.js.map

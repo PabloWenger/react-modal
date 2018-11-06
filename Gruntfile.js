@@ -125,7 +125,7 @@ module.exports = function(grunt){
 					interrupt: true,
 					spawn: false,
 				},
-				files: ['bundle/js/app.js', 'bundle/css/app.css', 'src/**/*.html']
+				files: ['bundle/js/'+publishConfig.exports+'.js', 'bundle/css/'+publishConfig.exports+'.css', 'src/**/*.html']
 			},
 			sass: {
 				files: ['src/**/*.scss'],

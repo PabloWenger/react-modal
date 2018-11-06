@@ -2,15 +2,19 @@
 react-modal is a simple method to create component modals for [React](https://github.com/facebook/react). It's written using ES6 with  [Grunt](https://gruntjs.com/) and [Browserify](http://browserify.org/).
 
 ### Installation
+```sh
+npm install @sbj/react-modal --save
 ```
-npm install @sysopnecho/react-modal --save
+React-Modal depends of [react](https://github.com/facebook/react), [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom), [classnames](https://github.com/JedWatson/classnames), [prop-types](https://github.com/facebook/prop-types). You may install these dependencies:
+```sh
+npm install react react-dom classnames prop-types --save
 ```
 ### How to use
 **1.-** first of all, you have to use `ModalContainer` to mark where you want render your modal compoments:
 ```JavaScript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalContainer } from '@sysopnecho/react-modal';
+import { ModalContainer } from '@sbj/react-modal';
 
 const app = () => 
 <div>
@@ -24,7 +28,7 @@ ReactDOM.render(<App></App>, document.getElementById('app'));
 **2.-** Then, to render a component modal you have to call `openModal` function and pass your component and props:
 ```JavaScript
 import React from 'react';
-import { openModal } from '@sysopnecho/react-modal';
+import { openModal } from '@sbj/react-modal';
 import MyModalComponent from 'components/modals';
 
 export default class ParentComponentView extends React.Component {
@@ -57,7 +61,7 @@ export default class ParentComponentView extends React.Component {
 **3.-** Must use `Modal` to extend your modal components, if you want, you can use `ModalHeader, ModalBody, ModalFooter`:
 ```JavaScript
 import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@sysopnecho/react-modal';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@sbj/react-modal';
 
 export default class MyModalComponent extends Modal {
     constructor(props){
@@ -102,7 +106,7 @@ export default class MyModalComponent extends Modal {
 
 **4.-** you also need import the basic styles:
 ```scss
-@import '@sysopnecho/react-modal/dist/sass/main' //using './node_modules' in sass path
+@import '@sbj/react-modal/dist/sass/main' //using './node_modules' in sass path
 ```
 >Note:
 >by default, it uses the following css classes when renders modals. **You must cumtomize it**:
@@ -126,3 +130,6 @@ Open your favorite Terminal and run this command:
 ```sh
 npm start
 ```
+
+### License
+React-Modal is [MIT licensed](https://github.com/SysopNecho/react-modal/blob/master/LICENSE).

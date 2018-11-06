@@ -1,6 +1,6 @@
 {
   "name": "@sbj/react-modal",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "a simple react modal component",
   "main": "dist/js/react-modal.js",
   "scripts": {
@@ -59,13 +59,13 @@
     "portscanner": "^1.0.0",
     "serve-static": "^1.12.4",
     "stringify": "^5.1.0",
-    "watchify": "^3.11.0"
+    "watchify": "^3.11.0",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "prop-types": "^15.6.2"
+    "react-dom": "^16.5.2"
   },
   "stringify": "./conf/stringify.config.js",
   "browserify-shim": "./shim.js"

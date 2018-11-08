@@ -1,4 +1,6 @@
 # React-Modal
+[![Build Status](https://travis-ci.org/SysopNecho/react-modal.svg?branch=master)](https://travis-ci.org/SysopNecho/react-modal)
+
 react-modal is a simple method to create component modals for [React](https://github.com/facebook/react). It's written using ES6 with  [Grunt](https://gruntjs.com/) and [Browserify](http://browserify.org/).
 
 ### Installation
@@ -16,7 +18,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModalContainer } from '@sysopnecho/react-modal';
 
-const app = () => 
+const App = () => 
 <div>
     <h1>react-modal example</h1>
     <ModalContainer/>

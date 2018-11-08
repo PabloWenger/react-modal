@@ -1,5 +1,5 @@
 {
-  "name": "@sbj/react-modal",
+  "name": "@sysopnecho/react-modal",
   "version": "1.0.12",
   "description": "a simple react modal component",
   "main": "dist/js/react-modal.js",

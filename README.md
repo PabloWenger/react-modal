@@ -3,7 +3,7 @@ react-modal is a simple method to create component modals for [React](https://gi
 
 ### Installation
 ```sh
-npm install @sbj/react-modal --save
+npm install @sysopnecho/react-modal --save
 ```
 React-Modal depends of [react](https://github.com/facebook/react), [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom), [classnames](https://github.com/JedWatson/classnames), [prop-types](https://github.com/facebook/prop-types). You may install these dependencies:
 ```sh
@@ -14,7 +14,7 @@ npm install react react-dom classnames prop-types --save
 ```JavaScript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalContainer } from '@sbj/react-modal';
+import { ModalContainer } from '@sysopnecho/react-modal';
 
 const app = () => 
 <div>
@@ -28,7 +28,7 @@ ReactDOM.render(<App></App>, document.getElementById('app'));
 **2.-** Then, to render a component modal you have to call `openModal` function and pass your component and props:
 ```JavaScript
 import React from 'react';
-import { openModal } from '@sbj/react-modal';
+import { openModal } from '@sysopnecho/react-modal';
 import MyModalComponent from 'components/modals';
 
 export default class ParentComponentView extends React.Component {
@@ -61,7 +61,7 @@ export default class ParentComponentView extends React.Component {
 **3.-** Must use `Modal` to extend your modal components, if you want, you can use `ModalHeader, ModalBody, ModalFooter`:
 ```JavaScript
 import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@sbj/react-modal';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@sysopnecho/react-modal';
 
 export default class MyModalComponent extends Modal {
     constructor(props){
@@ -106,7 +106,7 @@ export default class MyModalComponent extends Modal {
 
 **4.-** you also need import the basic styles:
 ```scss
-@import '@sbj/react-modal/dist/sass/main' //using './node_modules' in sass path
+@import '@sysopnecho/react-modal/dist/sass/main' //using './node_modules' in sass path
 ```
 >Note:
 >by default, it uses the following css classes when renders modals. **You must cumtomize it**:

@@ -289,7 +289,8 @@ module.exports = function(grunt){
 			if (r >= 0) reqs.splice(r, 1); 
 		}); 
 
-		b.require(reqs)
+		b.require('./libs.js', {entry : true})
+		.require(reqs)
 		.bundle(handleError)
 		.pipe(fs.createWriteStream(filePath, 'utf8')).on('finish', done);
 	});
